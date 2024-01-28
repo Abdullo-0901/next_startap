@@ -11,7 +11,9 @@ const HomePage = async (props: any) => {
   return (
     <div className="h-[200vh] relative">
       <HeaderPage />
-      <HeroPage trending={data} />
+      <main className="relative pl-4 lg:space-y-24 lg:pl-16 ">
+        <HeroPage trending={data} />
+      </main>
     </div>
   );
 };
