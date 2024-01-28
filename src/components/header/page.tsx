@@ -9,7 +9,6 @@ import Link from "next/link";
 
 const HeaderPage = () => {
   const [scroll, setScroll] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
