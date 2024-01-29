@@ -1,19 +1,16 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { RowProps } from "./row.props";
-import { FaChevronRight } from "react-icons/fa";
-import { FaChevronLeft } from "react-icons/fa";
+import { useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Thumbnail from "../thumbnail/thumbnail";
+import { RowProps } from "./row.props";
 
-const RowPage = ({ title, movies }: RowProps): JSX.Element => {
+const RowPage = ({ title, movies, isBig = false }: RowProps): JSX.Element => {
   const [moved, setMoved] = useState<boolean>(false);
-  const [movedRight, setMovedRight] = useState<boolean>(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const handleCklick = (direction: "left" | "right") => {
     setMoved(true);
-    setMovedRight(true);
 
     if (carouselRef.current) {
       const { scrollLeft, clientWidth } = carouselRef.current;
@@ -48,10 +45,12 @@ const RowPage = ({ title, movies }: RowProps): JSX.Element => {
 
         <div
           ref={carouselRef}
-          className="flex items-center space-x-2 overflow-x-scroll md:space-x-4 scrollbar-none  "
+          className={` ${
+            !isBig && "space-x-2 md:space-x-4"
+          } flex items-center  overflow-y-hidden  overflow-x-scroll  scrollbar-none  `}
         >
           {movies.results.map((movie) => {
-            return <Thumbnail key={movie.id} movie={movie} />;
+            return <Thumbnail isBig={isBig} key={movie.id} movie={movie} />;
           })}
         </div>
         <FaChevronRight

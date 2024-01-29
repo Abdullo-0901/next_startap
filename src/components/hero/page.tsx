@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { HeroProps } from "./hero.props";
-import { IMovie, IResult } from "@/interfaces/app.interface";
-import Image from "next/image";
 import { image_base } from "@/helpers/constants";
+import { IResult } from "@/interfaces/app.interface";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { TbPlayerPlay } from "react-icons/tb";
 import ReactStars from "react-stars";
+import { HeroProps } from "./hero.props";
 
 const HeroPage = ({ trending }: HeroProps): JSX.Element => {
   const [movie, setMovie] = useState<IResult>({} as IResult);
