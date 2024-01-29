@@ -10,15 +10,11 @@ import ReactStars from "react-stars";
 
 const HeroPage = ({ trending }: HeroProps): JSX.Element => {
   const [movie, setMovie] = useState<IResult>({} as IResult);
-  console.log(trending.results);
-
   useEffect(() => {
     const rundomMovie =
       trending.results[Math.floor(Math.random() * trending.results.length)];
-
     setMovie(rundomMovie);
   }, [trending]);
-  console.log(movie);
 
   return (
     <div className="flex flex-col space-y-2   py-20  md:space-y-4 lg:h-[65vh] lg:pb-12 lg:justify-center">
